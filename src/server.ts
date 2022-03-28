@@ -1,6 +1,8 @@
 //Dependencies
 import express, { Request, Response } from 'express'
 const cors = require('cors')
+const { router } = require("./router")
+const database = require('./database')
 
 //App
 const app = express()
@@ -15,9 +17,6 @@ const app = express()
     app.use(express.json())
 
 //Routes
-    //TEST ROUTE
-    app.get('/test', (req: Request, res: Response) => {
-        res.status(200).json({success: true})
-    })
+    app.use(router)
 
 module.exports = app
