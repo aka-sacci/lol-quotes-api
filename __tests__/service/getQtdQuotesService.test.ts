@@ -1,3 +1,4 @@
+import { iReturnObject } from '../../src/@types/myTypes';
 //Import database
 const database = require('../../src/database')
 
@@ -11,13 +12,14 @@ const mockedData = new mockQuotes
 
 describe('getQtdQuotesService', () => {
     var connection: any
+    var result: iReturnObject
     beforeAll(async () => {
         connection = await database
         await mockedData.insertMockedQuotes(connection)
     })
 
     it('should return the number of quotes (1)', async () => {
-        const result = await service.execute()
+        result = await service.execute()
         expect(result.success).toBe(true)
         expect(result).toHaveProperty("qtd")
         expect(result.qtd).toBe(1)
@@ -26,7 +28,7 @@ describe('getQtdQuotesService', () => {
     it('should throw a connection error', async () => {
         await mockedData.deleteMockedQuotes(connection)
         await connection.connection.close()
-        const result = await service.execute()
+        result = await service.execute()
         expect(result.success).toBe(false)
         expect(result).toHaveProperty("error")
     });

@@ -8,7 +8,6 @@ const mockedData = new mockQuotes
 
 //Import database
 const database = require('../../src/database')
-
 describe('getQuotesController', () => {
     var connection: any
 

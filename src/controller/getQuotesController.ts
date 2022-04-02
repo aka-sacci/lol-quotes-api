@@ -1,11 +1,13 @@
 import { Request, Response } from 'express'
+import { iController, iReturnObject } from '../@types/myTypes'
 const getQuoteService = require('../service/getQuotesService')
 const GetQuoteService = new getQuoteService
 
+class getQuotesController implements iController {
 
-class getQuotesController {
-    async getQuotes(req: Request<{ id: string }>, res: Response): Promise<void> {
-        const result = await GetQuoteService.execute(req.params.id)
+    async handle(req: Request<{ id: string }>, res: Response): Promise<void> {
+        var result: iReturnObject
+        result = await GetQuoteService.execute(req.params.id)
         if (result.success === true) {
             if (result.hasRows === true) {
                 res.status(200).json({ quote: result.quoteData })

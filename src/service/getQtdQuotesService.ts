@@ -1,14 +1,24 @@
+import { iService, iReturnObject } from "../@types/myTypes";
 const GetQtdQuotesDatabase = require('../database')
 const GetQtdQuotesModel = GetQtdQuotesDatabase.model('quotes')
 
-class getQtdQuotesService {
-    async execute(): Promise<Object> {
+class getQtdQuotesService implements iService {
+
+    quoteData: object
+    returnObject: iReturnObject;
+    constructor(quoteData: object, returnObject: iReturnObject) {
+        this.quoteData = quoteData;
+        this.returnObject = returnObject
+    }
+
+    async execute(): Promise<iReturnObject>{
         try {
-            const quoteData = await this.getQuoteById()
-            return {
+            this.quoteData = await this.getQuoteQtd()
+            this.returnObject = {
                 success: true,
-                qtd: quoteData
+                qtd: this.quoteData
             }
+            return this.returnObject
         } catch (err: any) {
             return {
                 success: false,
@@ -19,7 +29,7 @@ class getQtdQuotesService {
         }
     }
 
-    async getQuoteById(): Promise<object> {
+    async getQuoteQtd(): Promise<object> {
         const result = await GetQtdQuotesModel
             .count({})
             .then((result: object) => result)

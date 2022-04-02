@@ -3,14 +3,13 @@ import { iReturnObject } from '../../src/@types/myTypes';
 const database = require('../../src/database')
 
 //Import service
-const getQuoteService = require('../../src/service/getQuotesService')
-const service = new getQuoteService
+const getQtdQuotesService = require('../../src/service/getAllQuotesService')
+const service = new getQtdQuotesService
 
 //Import Mocks
 const mockQuotes = require('../../src/utils/mocks/mockQuotes')
 const mockedData = new mockQuotes
-
-describe('getQuotesService', () => {
+describe('getAllQuotesService', () => {
     var connection: any
     var result: iReturnObject
     beforeAll(async () => {
@@ -18,30 +17,29 @@ describe('getQuotesService', () => {
         await mockedData.insertMockedQuotes(connection)
     })
 
-    it('should return the quote with index 0', async () => {
-        result = await service.execute(0)
+    it('should return all mocked quotes (1)', async () => {
+        result = await service.execute()
         expect(result.success).toBe(true)
         expect(result.hasRows).toBe(true)
         expect(result).toHaveProperty("quoteData")
-
     });
 
     it("shouldn't return any quote", async () => {
-        result = await service.execute(50)
+        await mockedData.deleteMockedQuotes(connection)
+        result = await service.execute()
         expect(result.success).toBe(true)
         expect(result.hasRows).toBe(false)
         expect(result).toHaveProperty("message")
         expect(result).not.toHaveProperty("quoteData")
     });
 
-    it('should throw a connection error ', async () => {
+    it('should throw a connection error', async () => {
         await mockedData.deleteMockedQuotes(connection)
         await connection.connection.close()
-        result = await service.execute(50)
+        result = await service.execute()
         expect(result.success).toBe(false)
         expect(result).toHaveProperty("error")
     });
-
 });
 
 export { }

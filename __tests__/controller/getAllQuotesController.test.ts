@@ -8,12 +8,12 @@ const mockedData = new mockQuotes
 
 //Import database
 const database = require('../../src/database')
-describe('getQtdQuotesController', () => {
+describe('getAllQuotesController', () => {
     
     var connection: any
     const response = async (): Promise<any> => {
         const myRequest = await request(testServer)
-            .get("/getqtdquotes/")
+            .get("/getallquotes/")
             .send()
         return myRequest
     }
@@ -23,10 +23,10 @@ describe('getQtdQuotesController', () => {
         await mockedData.insertMockedQuotes(connection)
     })
 
-    it('should return status 200 and the quantity of registers', async () => {
+    it('should return status 200 and all the quotes', async () => {
         const myResponse = await response()
         expect(myResponse.status).toBe(200)
-        expect(myResponse.body).toHaveProperty("qtd")
+        expect(myResponse.body).toHaveProperty("quotes")
     });
 
     it('should return status 500 and a error', async () => {
