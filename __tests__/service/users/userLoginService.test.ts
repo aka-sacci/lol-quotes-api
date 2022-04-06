@@ -3,14 +3,14 @@ import { iReturnObject, iMockData, iService } from '../../../src/@types/myTypes'
 const database = require('../../../src/database')
 
 //Import service
-const userLoginService = require('../../../src/service/users/userLogin')
+const userLoginService = require('../../../src/service/users/userLoginService')
 const service: iService = new userLoginService
 
 //Import Mocks
 const mockUsers = require('../../../src/utils/mocks/mockUsers')
 const mockedUsers: iMockData = new mockUsers
 
-describe('userLogin', () => {
+describe('userLoginService', () => {
     var connection: any
     var result: iReturnObject
 

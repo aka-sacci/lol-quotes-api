@@ -1,15 +1,15 @@
-import { iMockData } from "../../src/@types/myTypes"
+import { iMockData } from "../../../src/@types/myTypes"
 
 //SUPERTEST
 const request = require('supertest')
-const testServer = require("../../src/server")
+const testServer = require("../../../src/server")
 
 //Import Mocks
-const mockQuotes = require('../../src/utils/mocks/mockQuotes')
+const mockQuotes = require('../../../src/utils/mocks/mockQuotes')
 const mockedData: iMockData = new mockQuotes
 
 //Import database
-const database = require('../../src/database')
+const database = require('../../../src/database')
 describe('getAllQuotesController', () => {
     
     var connection: any
