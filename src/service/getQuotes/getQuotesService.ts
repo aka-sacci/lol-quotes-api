@@ -1,8 +1,8 @@
-import { iService, iReturnObject } from "../@types/myTypes";
-const getAllQuotesDatabase = require('../database')
-const GetAllQuotesModel = getAllQuotesDatabase.model('quotes')
+import { iService, iReturnObject } from "../../@types/myTypes";
+const getQuotesDatabase = require('../../database')
+const GetQuotesModel = getQuotesDatabase.model('quotes')
 
-class getAllQuotesService implements iService {
+class getQuotesService implements iService {
 
     quoteData: object
     returnObject: iReturnObject;
@@ -10,14 +10,15 @@ class getAllQuotesService implements iService {
         this.quoteData = quoteData;
         this.returnObject = returnObject
     }
-    async execute(): Promise<object> {
-        try {
-            this.quoteData = await this.getAllQuotes()
 
-            if (Object.keys(this.quoteData).length === 0) this.returnObject = {
+    async execute(params: { id: number }): Promise<object> {
+        const { id } = params
+        try {
+            this.quoteData = await this.getQuoteById(id)
+            if (this.quoteData === null) this.returnObject = {
                 success: true,
                 hasRows: false,
-                message: "Não há nenhuma fala!",
+                message: "Não há nenhuma fala com o index " + id
             }
             else this.returnObject = {
                 success: true,
@@ -35,9 +36,9 @@ class getAllQuotesService implements iService {
         }
     }
 
-    async getAllQuotes(): Promise<object> {
-        const result = await GetAllQuotesModel
-            .find()
+    async getQuoteById(id: number): Promise<object> {
+        const result = await GetQuotesModel
+            .findOne({ index: id })
             .then((result: object) => result)
             .catch((err: Error) => {
                 const errorToBeThrown = new Error
@@ -50,4 +51,4 @@ class getAllQuotesService implements iService {
 
 }
 
-module.exports = getAllQuotesService
+module.exports = getQuotesService

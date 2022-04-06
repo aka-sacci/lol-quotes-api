@@ -1,5 +1,5 @@
-import { iService, iReturnObject } from "../@types/myTypes";
-const GetQtdQuotesDatabase = require('../database')
+import { iService, iReturnObject } from "../../@types/myTypes";
+const GetQtdQuotesDatabase = require('../../database')
 const GetQtdQuotesModel = GetQtdQuotesDatabase.model('quotes')
 
 class getQtdQuotesService implements iService {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { iController, iReturnObject } from '../@types/myTypes'
-const getAllQuotesService = require('../service/getAllQuotesService')
-const GetAllQuotesService = new getAllQuotesService
+import { iController, iReturnObject, iService } from '../../@types/myTypes'
+const getAllQuotesService = require('../../service/getQuotes/getAllQuotesService')
+const GetAllQuotesService: iService = new getAllQuotesService
 
 class getAllQuotesController implements iController {
 

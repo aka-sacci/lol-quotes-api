@@ -4,6 +4,7 @@ const env = process.env.NODE_ENV || 'development';
 
 //Shemas
 const quotesSchema = require('./models/quotesSchema')
+const usersSchema = require('./models/usersSchema')
 
 //Config Mongoose
 
@@ -19,6 +20,7 @@ try {
 
 function modelDefinition(connection: any): void {
     connection.model("quotes", quotesSchema)
+    connection.model("users", usersSchema)
 }
 
 function returnDatabaseURL(): string | undefined {
@@ -26,7 +28,4 @@ function returnDatabaseURL(): string | undefined {
     if (env === "test") return process.env.TEST_DATABASE_URL
 }
 
-
-
 module.exports = mongoose
-//

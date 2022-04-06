@@ -1,20 +1,21 @@
-import { iReturnObject } from '../../src/@types/myTypes';
+import { iReturnObject, iMockData, iService } from '../../../src/@types/myTypes';
 //Import database
-const database = require('../../src/database')
+const database = require('../../../src/database')
 
 //Import service
-const getQtdQuotesService = require('../../src/service/getAllQuotesService')
-const service = new getQtdQuotesService
+const getQtdQuotesService = require('../../../src/service/getQuotes/getAllQuotesService')
+const service: iService = new getQtdQuotesService
 
 //Import Mocks
-const mockQuotes = require('../../src/utils/mocks/mockQuotes')
-const mockedData = new mockQuotes
+const mockQuotes = require('../../../src/utils/mocks/mockQuotes')
+const mockedData: iMockData = new mockQuotes
+
 describe('getAllQuotesService', () => {
     var connection: any
     var result: iReturnObject
     beforeAll(async () => {
         connection = await database
-        await mockedData.insertMockedQuotes(connection)
+        await mockedData.insert(connection)
     })
 
     it('should return all mocked quotes (1)', async () => {
@@ -25,7 +26,7 @@ describe('getAllQuotesService', () => {
     });
 
     it("shouldn't return any quote", async () => {
-        await mockedData.deleteMockedQuotes(connection)
+        await mockedData.delete(connection)
         result = await service.execute()
         expect(result.success).toBe(true)
         expect(result.hasRows).toBe(false)
@@ -34,7 +35,7 @@ describe('getAllQuotesService', () => {
     });
 
     it('should throw a connection error', async () => {
-        await mockedData.deleteMockedQuotes(connection)
+        await mockedData.delete(connection)
         await connection.connection.close()
         result = await service.execute()
         expect(result.success).toBe(false)

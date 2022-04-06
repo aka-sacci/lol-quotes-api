@@ -2,13 +2,13 @@ import { Router, Request, Response, NextFunction } from "express";
 const router = Router()
 
 //CONTROLLERS
-const getQuotesController = require('./controller/getQuotesController')
+const getQuotesController = require('./controller/getQuotes/getQuotesController')
 const GetQuotesController = new getQuotesController
 
-const getQtdQuotesController = require('./controller/getQtdQuotesController')
+const getQtdQuotesController = require('./controller/getQuotes/getQtdQuotesController')
 const GetQtdQuotesController = new getQtdQuotesController
 
-const getAllQuotesController = require('./controller/getAllQuotesController')
+const getAllQuotesController = require('./controller/getQuotes/getAllQuotesController')
 const GetAllQuotesController = new getAllQuotesController
 
 //TEST ROUTE

@@ -1,6 +1,7 @@
+import { iMockData } from "../../@types/myTypes"
 
-class mockQuotes {
-    async insertMockedQuotes(connection: any): Promise<void> {
+class mockQuotes implements iMockData {
+    async insert(connection: any): Promise<void> {
         const mockedQuotes = connection.model('quotes')
         const mockedData = new mockedQuotes({
             champion: "Champion Test 0",
@@ -11,7 +12,7 @@ class mockQuotes {
         await mockedData.save()
     }
 
-    async deleteMockedQuotes (connection: any): Promise<void> {
+    async delete(connection: any): Promise<void> {
         const mockedQuotes = connection.model('quotes')
         await mockedQuotes.deleteMany({})
     }
