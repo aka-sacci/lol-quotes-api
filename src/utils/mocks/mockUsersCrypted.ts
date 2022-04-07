@@ -1,12 +1,12 @@
 import { iMockData } from "../../@types/myTypes";
 
-class mockUsers implements iMockData {
+class mockUsersCrypted implements iMockData {
     async insert(connection: any): Promise<void> {
         
             const mockedUsersSchema = connection.model('users')
             const userToBeInsert = new mockedUsersSchema({
                 email: "testmail@mail.com",
-                password: "testpassword",
+                password: "$2a$12$Yh65Ngo4/R6eV5MaguqdPuq3.sW2jpXO18cPokLAXgIyAQhwlqYAy",
                 name: "Test User"
             })
             await userToBeInsert.save();
@@ -18,4 +18,4 @@ class mockUsers implements iMockData {
     }
 }
 
-module.exports = mockUsers
+module.exports = mockUsersCrypted

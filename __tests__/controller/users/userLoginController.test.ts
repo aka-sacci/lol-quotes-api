@@ -5,7 +5,7 @@ const request = require('supertest')
 const testServer = require("../../../src/server")
 
 //Import Mocks
-const mockUsers = require('../../../src/utils/mocks/mockUsers')
+const mockUsers = require('../../../src/utils/mocks/mockUsersCrypted')
 const mockedUsers: iMockData = new mockUsers
 
 //Import database
@@ -33,10 +33,18 @@ describe('userLoginController', () => {
         expect(myResponse.status).toBe(200)
         expect(myResponse.body).toHaveProperty("token")
     });
-    it('should return status 404 and a message', async () => {
-        const myResponse = await response("wrongtestmail@mail.com", "wrongtestpassword")
+    it('should return status 404 and a attribute to accuse the wrong input as "email"', async () => {
+        const myResponse = await response("wrongtestmail@mail.com", "testpassword")
         expect(myResponse.status).toBe(404)
-        expect(myResponse.body).toHaveProperty("message")
+        expect(myResponse.body).toHaveProperty("wrongInput")
+        expect(myResponse.body.wrongInput).toBe("email")
+    })
+
+    it('should return status 404 and a attribute to accuse the wrong input as "password"', async () => {
+        const myResponse = await response("testmail@mail.com", "wrongtestpassword")
+        expect(myResponse.status).toBe(404)
+        expect(myResponse.body).toHaveProperty("wrongInput")
+        expect(myResponse.body.wrongInput).toBe("password")
     })
     it('should return status 500 and a error', async () => {
         await mockedUsers.delete(connection)

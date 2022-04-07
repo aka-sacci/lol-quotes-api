@@ -10,7 +10,7 @@ interface iService {
     async getQuoteById?(id: number): Promise<object>,
     async getQuoteQtd?(): Promise<object>,
     async getAllQuotes?(): Promise<object>,
-    async validateUser?(email: string, password: string): Promise<number>
+    async validateUser?(email: string, password: string): Promise<iReturnValidateUser>
     quoteData?: object | number,
     returnObject: iReturnObject
 
@@ -32,7 +32,8 @@ interface iReturnObject {
     message?: string,
     quoteData?: object | number,
     qtd?: object
-    error?: Error
+    error?: Error,
+    wrongInput?: string | null
 }
 
 interface iMockData {
@@ -40,6 +41,15 @@ interface iMockData {
     async delete(connection: any): Promise<void>
 }
 
+interface iReturnValidateUser {
+    isValid: boolean,
+    wrongInput: null | "password" | "email"
+}
+
+interface iAuthRequestBody {
+    email: string, 
+    password: string
+}
 
 
 export {
@@ -47,6 +57,8 @@ export {
     iReturnObject,
     iService,
     iMockData,
-    iUserData
+    iUserData,
+    iReturnValidateUser,
+    iAuthRequestBody
 }
 

@@ -1,15 +1,20 @@
 import { Router, Request, Response, NextFunction } from "express";
+import { iController } from "./@types/myTypes";
+
 const router = Router()
 
 //CONTROLLERS
 const getQuotesController = require('./controller/getQuotes/getQuotesController')
-const GetQuotesController = new getQuotesController
+const GetQuotesController: iController = new getQuotesController
 
 const getQtdQuotesController = require('./controller/getQuotes/getQtdQuotesController')
-const GetQtdQuotesController = new getQtdQuotesController
+const GetQtdQuotesController: iController = new getQtdQuotesController
 
 const getAllQuotesController = require('./controller/getQuotes/getAllQuotesController')
-const GetAllQuotesController = new getAllQuotesController
+const GetAllQuotesController: iController = new getAllQuotesController
+
+const userLoginController = require('./controller/user/userLoginController')
+const UserLoginController: iController = new userLoginController
 
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
@@ -22,6 +27,8 @@ router.get('/getquotes/:id', GetQuotesController.handle)
 router.get('/getqtdquotes', GetQtdQuotesController.handle)
 //GET ALL QUOTES ROUTES
 router.get('/getallquotes', GetAllQuotesController.handle)
+//AUTH USER ROUTE
+router.post('/authuser', UserLoginController.handle)
 
 
 exports.router = router
