@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/src/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "dev": "tsnd src/",
     "build": "tsc -p .",
     "start": "node ./"

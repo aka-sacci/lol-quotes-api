@@ -22,7 +22,6 @@ describe('getQtdQuotesService', () => {
         result = await service.execute()
         expect(result.success).toBe(true)
         expect(result).toHaveProperty("qtd")
-        expect(result.qtd).toBe(1)
     });
 
     it('should throw a connection error', async () => {

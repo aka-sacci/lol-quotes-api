@@ -16,6 +16,10 @@ const GetAllQuotesController: iController = new getAllQuotesController
 const userLoginController = require('./controller/user/userLoginController')
 const UserLoginController: iController = new userLoginController
 
+
+const createUserController = require('./controller/user/createUserController')
+const CreateUserController: iController = new createUserController
+
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
     res.status(200).json({success: true})
@@ -29,6 +33,8 @@ router.get('/getqtdquotes', GetQtdQuotesController.handle)
 router.get('/getallquotes', GetAllQuotesController.handle)
 //AUTH USER ROUTE
 router.post('/authuser', UserLoginController.handle)
+//CREATE USER ROUTE
+router.post('/createuser', CreateUserController.handle)
 
 
 exports.router = router

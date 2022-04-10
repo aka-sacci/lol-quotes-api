@@ -11,6 +11,8 @@ interface iService {
     async getQuoteQtd?(): Promise<object>,
     async getAllQuotes?(): Promise<object>,
     async validateUser?(email: string, password: string): Promise<iReturnValidateUser>
+    async checkEmail?(email: string): Promise<boolean>,
+    async createUser?(params: iCreateUserData): Promise<boolean>,
     quoteData?: object | number,
     returnObject: iReturnObject
 
@@ -18,12 +20,19 @@ interface iService {
 
 interface iExecuteParams {
     id?: number | string,
-    userData?: iUserData
+    userData?: iUserData,
+    createUserData?: iCreateUserData
 }
 
 interface iUserData {
     email: string,
     password: string
+}
+
+interface iCreateUserData {
+    email: string,
+    password: string,
+    name: string
 }
 
 interface iReturnObject {
@@ -59,6 +68,8 @@ export {
     iMockData,
     iUserData,
     iReturnValidateUser,
-    iAuthRequestBody
+    iAuthRequestBody,
+    iCreateUserData,
+    iExecuteParams
 }
 
