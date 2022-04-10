@@ -12,7 +12,6 @@ try {
     const database = returnDatabaseURL()
     mongoose.connect(database)
     modelDefinition(mongoose)
-    console.log("Conexão aberta!")
 } catch (err: any) {
     console.log("Erro ao se conectar ao MongoDB: " + err)
 }

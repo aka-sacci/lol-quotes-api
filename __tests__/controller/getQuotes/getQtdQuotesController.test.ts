@@ -29,6 +29,7 @@ describe('getQtdQuotesController', () => {
         const myResponse = await response()
         expect(myResponse.status).toBe(200)
         expect(myResponse.body).toHaveProperty("qtd")
+        expect(myResponse.body.qtd).toBe(1)
     });
 
     it('should return status 500 and a error', async () => {

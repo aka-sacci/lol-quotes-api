@@ -23,6 +23,17 @@ describe('userLoginController', () => {
         return myRequest
     }
 
+    const responseWithToken = async (email: string, password: string, token: string) => {
+        const myRequest = await request(testServer)
+            .post("/authuser")
+            .set({ authorization: token })
+            .send({
+                email: email,
+                password: password
+            })
+        return myRequest
+    }
+
     beforeAll(async () => {
         connection = await database
         await mockedUsers.insert(connection)
@@ -33,6 +44,15 @@ describe('userLoginController', () => {
         expect(myResponse.status).toBe(200)
         expect(myResponse.body).toHaveProperty("token")
     });
+
+    it('should return status 302 and a message, stating that the user is already authenticated', async () => {
+        const myResponse = await response("testmail@mail.com", "testpassword")
+        const token = myResponse.body.token
+        const myResponseWithToken = await responseWithToken("testmail@mail.com", "testpassword", token)
+        expect(myResponseWithToken.status).toBe(302)
+        expect(myResponseWithToken.body).toHaveProperty("message")
+        expect(myResponseWithToken.body.message).toBe("User is already authenticated!")
+    })
     it('should return status 404 and a attribute to accuse the wrong input as "email"', async () => {
         const myResponse = await response("wrongtestmail@mail.com", "testpassword")
         expect(myResponse.status).toBe(404)
