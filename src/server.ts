@@ -1,5 +1,6 @@
 //Dependencies
 import express, { Request, Response } from 'express'
+const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const { router } = require("./router")
 const database = require('./database')
@@ -8,15 +9,15 @@ const database = require('./database')
 const app = express()
 
 //Config
-    //CORS
-    app.use(cors())
-
+//CORS
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
+app.use(cookieParser())
 //Middlewares
-    //JSON CONVERTER
-    app.use(express.urlencoded({ extended: false }))
-    app.use(express.json())
+//JSON CONVERTER
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 //Routes
-    app.use(router)
+app.use(router)
 
 module.exports = app

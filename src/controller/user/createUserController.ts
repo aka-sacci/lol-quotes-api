@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { iController, iService, iCreateUserData, iReturnObject } from "../../@types/myTypes";
-import 'dotenv/config'
+import 'dotenv/config';
 const jwt = require('jsonwebtoken')
 const createUserService = require('../../service/users/createUserService')
 const CreateUserService: iService = new createUserService
@@ -18,7 +18,11 @@ class createUserController implements iController {
                     process.env.JWT_SECRET,
                     { expiresIn: '1h' }
                 )
-                res.status(201).json({ token })
+                res.status(201).cookie("JWT", token, {
+                    path: "/",
+                    expires: new Date(Date.now() + 3600000),
+                    httpOnly: true
+                }).json({ token })
                 break;
             case false:
                 if (result.error?.name === "ERR_MAIL_ALREADY_EXITS") res.status(409).json({ error: result.error })
