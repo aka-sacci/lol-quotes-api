@@ -1,7 +1,9 @@
+import { Console } from "console";
 import { Router, Request, Response, NextFunction } from "express";
 import { iController } from "./@types/myTypes";
 import { verifyJWTAuthRoute } from './middlewares/verifyJWT'
 
+const cookieParser = require('cookie-parser')
 const router = Router()
 
 //CONTROLLERS
@@ -23,7 +25,9 @@ const CreateUserController: iController = new createUserController
 
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
-    res.status(200).json({success: true})
+    // const test = req.cookies['JWT'] -> Assim que pega o Token
+    // console.log(test)
+    res.status(200).json({header: "cu"})
 })
 
 //GET QUOTES ROUTE
