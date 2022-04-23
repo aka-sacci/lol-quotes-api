@@ -1,7 +1,6 @@
 import { Console } from "console";
 import { Router, Request, Response, NextFunction } from "express";
 import { iController } from "./@types/myTypes";
-import { verifyJWTAuthRoute } from './middlewares/verifyJWT'
 
 const cookieParser = require('cookie-parser')
 const router = Router()
@@ -23,6 +22,9 @@ const UserLoginController: iController = new userLoginController
 const createUserController = require('./controller/user/createUserController')
 const CreateUserController: iController = new createUserController
 
+const isAuthedController = require('./controller/user/isAuthedController')
+const IsAuthedController: iController = new isAuthedController
+
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
     // const test = req.cookies['JWT'] -> Assim que pega o Token
@@ -37,9 +39,11 @@ router.get('/getqtdquotes', GetQtdQuotesController.handle)
 //GET ALL QUOTES ROUTES
 router.get('/getallquotes', GetAllQuotesController.handle)
 //AUTH USER ROUTE
-router.post('/authuser', verifyJWTAuthRoute, UserLoginController.handle)
+router.post('/authuser', UserLoginController.handle)
 //CREATE USER ROUTE
 router.post('/createuser', CreateUserController.handle)
+//AUTH JWT CHECKER ROUTE
+router.get('/isauthed', IsAuthedController.handle)
 
 
 exports.router = router

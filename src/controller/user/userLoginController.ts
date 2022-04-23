@@ -27,7 +27,7 @@ class userLoginController implements iController {
                         path: "/",
                         expires: new Date(Date.now() + 3600000),
                         httpOnly: true
-                    }).json({ token })
+                    }).send()
                 } else {
                     res.status(404).json({ wrongInput: result.wrongInput })
                 }

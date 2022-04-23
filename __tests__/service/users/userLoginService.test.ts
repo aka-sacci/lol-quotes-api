@@ -1,4 +1,5 @@
 import { iReturnObject, iMockData, iService } from '../../../src/@types/myTypes';
+
 //Import database
 const database = require('../../../src/database')
 
@@ -70,3 +71,5 @@ describe('userLoginService', () => {
         expect(result).toHaveProperty("error")
     });
 });
+
+export { }

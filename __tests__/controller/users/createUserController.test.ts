@@ -36,7 +36,7 @@ describe('createUserController', () => {
             name: "Test User"
         })
         expect(myResponse.status).toBe(201)
-        expect(myResponse.body).toHaveProperty("token")
+        expect(myResponse.headers).toHaveProperty('set-cookie')
     });
 
     it('should return status 409 and an error from emails conflict', async () => {

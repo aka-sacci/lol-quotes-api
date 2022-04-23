@@ -1,4 +1,3 @@
-import { error } from "console";
 import { iMockData, iReturnObject, iService } from "../../../src/@types/myTypes";
 
 //Import database

@@ -22,7 +22,7 @@ class createUserController implements iController {
                     path: "/",
                     expires: new Date(Date.now() + 3600000),
                     httpOnly: true
-                }).json({ token })
+                }).send()
                 break;
             case false:
                 if (result.error?.name === "ERR_MAIL_ALREADY_EXITS") res.status(409).json({ error: result.error })
