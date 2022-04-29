@@ -1,8 +1,7 @@
-import { Console } from "console";
 import { Router, Request, Response, NextFunction } from "express";
 import { iController } from "./@types/myTypes";
 
-const cookieParser = require('cookie-parser')
+
 const router = Router()
 
 //CONTROLLERS
@@ -25,6 +24,9 @@ const CreateUserController: iController = new createUserController
 const isAuthedController = require('./controller/user/isAuthedController')
 const IsAuthedController: iController = new isAuthedController
 
+const logoutController = require('./controller/user/logoutController')
+const LogoutController: iController = new logoutController
+
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
     // const test = req.cookies['JWT'] -> Assim que pega o Token
@@ -44,6 +46,7 @@ router.post('/authuser', UserLoginController.handle)
 router.post('/createuser', CreateUserController.handle)
 //AUTH JWT CHECKER ROUTE
 router.get('/isauthed', IsAuthedController.handle)
-
+//LOGOUT ROUTE
+router.get('/logout', LogoutController.handle)
 
 exports.router = router
