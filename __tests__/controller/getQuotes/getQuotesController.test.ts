@@ -12,9 +12,9 @@ const database = require('../../../src/database')
 describe('getQuotesController', () => {
     var connection: any
 
-    const response = async (id: number): Promise<any> => {
+    const response = async (quote: string): Promise<any> => {
         const myRequest = await request(testServer)
-        .get("/getquotes/" + id)
+        .get("/getquotes/" + quote)
         .send()
         return myRequest
     }
@@ -24,13 +24,13 @@ describe('getQuotesController', () => {
         await mockedData.insert(connection)
     })
     it('should return status 200 and a quote', async () => {
-        const myResponse = await response(0)
+        const myResponse = await response("Quote Test 0")
         expect(myResponse.status).toBe(200)
         expect(myResponse.body).toHaveProperty("quote")
     });
 
     it('should return status 404 and a message', async () => {
-        const myResponse = await response(50)
+        const myResponse = await response("wrong message")
         expect(myResponse.status).toBe(404)
         expect(myResponse.body).toHaveProperty("message")
     });
@@ -38,7 +38,7 @@ describe('getQuotesController', () => {
     it('should return status 500 and a error', async () => {
         await mockedData.delete(connection)
         await connection.connection.close()
-        const myResponse = await response(0)
+        const myResponse = await response("Quote Test 0")
         expect(myResponse.status).toBe(500)
         expect(myResponse.body).toHaveProperty("error")
     });

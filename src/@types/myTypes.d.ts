@@ -7,9 +7,10 @@ interface iController {
 
 interface iService {
     async execute(params?: iExecuteParams): Promise<object>,
-    async getQuoteById?(id: number): Promise<object>,
+    async getQuote?(quote: string): Promise<object>,
     async getQuoteQtd?(): Promise<object>,
     async getAllQuotes?(): Promise<object>,
+    async insertQuote?(iCreateQuote): Promise<object>,
     async validateUser?(email: string, password: string): Promise<iReturnValidateUser>
     async checkEmail?(email: string): Promise<boolean>,
     async createUser?(params: iCreateUserData): Promise<boolean>,
@@ -19,10 +20,11 @@ interface iService {
 }
 
 interface iExecuteParams {
-    id?: number | string,
+    quote?: string,
+    createQuote?: iCreateQuote
     userData?: iUserData,
     createUserData?: iCreateUserData,
-    token?: string
+    token?: string,
 }
 
 interface iUserData {
@@ -34,6 +36,12 @@ interface iCreateUserData {
     email: string,
     password: string,
     name: string
+}
+
+interface iCreateQuote {
+    quote: string,
+    length: number,
+    champion: string
 }
 
 interface iReturnObject {
@@ -71,6 +79,7 @@ export {
     iReturnValidateUser,
     iAuthRequestBody,
     iCreateUserData,
-    iExecuteParams
+    iExecuteParams,
+    iCreateQuote
 }
 

@@ -13,10 +13,6 @@ const quotesSchema = new Schema({
         type: Number,
         require: true
     },
-    index: {
-        type: Number,
-        require: true
-    }
 })
 
 module.exports = quotesSchema;

@@ -5,9 +5,9 @@ const GetQuoteService: iService = new getQuoteService
 
 class getQuotesController implements iController {
 
-    async handle(req: Request<{ id: string }>, res: Response): Promise<void> {
+    async handle(req: Request, res: Response): Promise<void> {
         var result: iReturnObject
-        result = await GetQuoteService.execute({id: req.params.id})
+        result = await GetQuoteService.execute({quote: req.params.quote})
         if (result.success === true) {
             if (result.hasRows === true) {
                 res.status(200).json({ quote: result.quoteData })

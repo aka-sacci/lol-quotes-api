@@ -19,7 +19,7 @@ describe('getQuotesService', () => {
     })
 
     it('should return the quote with index 0', async () => {
-        result = await service.execute({id: 0})
+        result = await service.execute({quote: "Quote Test 0"})
         expect(result.success).toBe(true)
         expect(result.hasRows).toBe(true)
         expect(result).toHaveProperty("quoteData")
@@ -27,7 +27,7 @@ describe('getQuotesService', () => {
     });
 
     it("shouldn't return any quote", async () => {
-        result = await service.execute({id: 50})
+        result = await service.execute({quote: "Wrong Quote"})
         expect(result.success).toBe(true)
         expect(result.hasRows).toBe(false)
         expect(result).toHaveProperty("message")
@@ -37,7 +37,7 @@ describe('getQuotesService', () => {
     it('should throw a connection error ', async () => {
         await mockedData.delete(connection)
         await connection.connection.close()
-        result = await service.execute({id: 0})
+        result = await service.execute({quote: "Quote Test 0"})
         expect(result.success).toBe(false)
         expect(result).toHaveProperty("error")
     });

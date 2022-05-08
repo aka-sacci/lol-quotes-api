@@ -35,7 +35,7 @@ router.get('/test', (req: Request, res: Response) => {
 })
 
 //GET QUOTES ROUTE
-router.get('/getquotes/:id', GetQuotesController.handle)
+router.get('/getquotes/:quote', GetQuotesController.handle)
 //GET QUOTES QTD ROUTE
 router.get('/getqtdquotes', GetQtdQuotesController.handle)
 //GET ALL QUOTES ROUTES

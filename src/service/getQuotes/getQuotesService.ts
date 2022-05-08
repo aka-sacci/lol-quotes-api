@@ -11,14 +11,14 @@ class getQuotesService implements iService {
         this.returnObject = returnObject
     }
 
-    async execute(params: { id: number }): Promise<object> {
-        const { id } = params
+    async execute(params: { quote: string }): Promise<object> {
+        const { quote } = params
         try {
-            this.quoteData = await this.getQuoteById(id)
+            this.quoteData = await this.getQuote(quote)
             if (this.quoteData === null) this.returnObject = {
                 success: true,
                 hasRows: false,
-                message: "Não há nenhuma fala com o index " + id
+                message: "A fala '" + quote +"' não existe!"
             }
             else this.returnObject = {
                 success: true,
@@ -36,9 +36,9 @@ class getQuotesService implements iService {
         }
     }
 
-    async getQuoteById(id: number): Promise<object> {
+    async getQuote(quote: string): Promise<object> {
         const result = await GetQuotesModel
-            .findOne({ index: id })
+            .findOne({ quote: quote })
             .then((result: object) => result)
             .catch((err: Error) => {
                 const errorToBeThrown = new Error

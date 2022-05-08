@@ -7,7 +7,6 @@ class mockQuotes implements iMockData {
             champion: "Champion Test 0",
             quote: "Quote Test 0",
             length: 1000,
-            index: 0
         })
         await mockedData.save()
     }
