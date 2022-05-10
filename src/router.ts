@@ -27,6 +27,9 @@ const IsAuthedController: iController = new isAuthedController
 const logoutController = require('./controller/user/logoutController')
 const LogoutController: iController = new logoutController
 
+const insertQuoteController = require('./controller/insertQuotes/insertQuoteController')
+const InsertQuoteController: iController = new insertQuoteController
+
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
     // const test = req.cookies['JWT'] -> Assim que pega o Token
@@ -48,5 +51,7 @@ router.post('/createuser', CreateUserController.handle)
 router.get('/isauthed', IsAuthedController.handle)
 //LOGOUT ROUTE
 router.get('/logout', LogoutController.handle)
+//INSERT QUOTE ROUTE
+router.post('/insertquote', InsertQuoteController.handle)
 
 exports.router = router
