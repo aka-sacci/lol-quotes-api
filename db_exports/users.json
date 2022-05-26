@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "62522aab6447159104c4948b"
+  },
+  "email": "test@test.com",
+  "password": "$2b$10$kHTTmoZ37RR2aedi8x8PvuYN.mAfNpdcyMuCH5QegVyMU7ulv//VO",
+  "name": "Lucas",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6263111a0c727d1a184ec43a"
+  },
+  "email": "saccilucas@gmail.com",
+  "password": "$2b$10$MG4apwKCDk5dk3U5unC.iuO4gXrj4nEMbR7PifFpjS/BAfYBonTii",
+  "name": "Lucas Gabriel Soares Sacci",
+  "__v": 0
+}]

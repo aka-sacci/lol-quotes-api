@@ -1,0 +1,129 @@
+[{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9714"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Destiny. Domination. Deceit.",
+  "length": 6000,
+  "index": 0
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9715"
+  },
+  "champion": "Mordekaiser",
+  "quote": "The world has tried to forget my existence, time to remind them why they fear.",
+  "length": 11000,
+  "index": 1
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9716"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Hahahahahaha...",
+  "length": 5000,
+  "index": 2
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9717"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Bow before your damnation!",
+  "length": 4000,
+  "index": 3
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9718"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Crumble!",
+  "length": 3000,
+  "index": 4
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9719"
+  },
+  "champion": "Mordekaiser",
+  "quote": "All shall serve the true lord of the living and the dead!",
+  "length": 7000,
+  "index": 5
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971a"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Iron stands eternal.",
+  "length": 4000,
+  "index": 6
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971b"
+  },
+  "champion": "Mordekaiser",
+  "quote": "Welcome to oblivion.",
+  "length": 5000,
+  "index": 7
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971c"
+  },
+  "champion": "Aatrox",
+  "quote": "Varus, 'V' 'A' 'R' 'U' 'S', your name should have an 'A' and then another 'A', Varus. There was a memo, Varus, there was a memo",
+  "length": 9000,
+  "index": 8
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971d"
+  },
+  "champion": "Aatrox",
+  "quote": "Now, hear the silence of annihilation!",
+  "length": 6000,
+  "index": 9
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971e"
+  },
+  "champion": "Aatrox",
+  "quote": "Am I the abyss? Or did I gaze into it?",
+  "length": 5000,
+  "index": 10
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e971f"
+  },
+  "champion": "Aatrox",
+  "quote": "Fight! Or be forgotten!",
+  "length": 4000,
+  "index": 11
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9720"
+  },
+  "champion": "Aatrox",
+  "quote": "Follow me into destruction!",
+  "length": 4000,
+  "index": 12
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9721"
+  },
+  "champion": "Aatrox",
+  "quote": "To war, Aatrox! They shall not rob us of our nobility! We shall stand, and spit venom at our tormentors for eternity!",
+  "length": 14000,
+  "index": 13
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9722"
+  },
+  "champion": "Aatrox",
+  "quote": "I touched the stars, and saw the glorious light of a thousand suns! Now, blinded by this elegance, how could my purpose be anything... but dark...",
+  "length": 16000,
+  "index": 14
+},{
+  "_id": {
+    "$oid": "623f3f63d0ccf98bd90e9723"
+  },
+  "champion": "Aatrox",
+  "quote": "Pray, fool! You face a Darkin.",
+  "length": 5000,
+  "index": 15
+}]

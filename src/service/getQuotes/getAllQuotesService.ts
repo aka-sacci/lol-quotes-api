@@ -38,6 +38,7 @@ class getAllQuotesService implements iService {
     async getAllQuotes(): Promise<object> {
         const result = await GetAllQuotesModel
             .find()
+            .sort({champion: 1, quote: 1})
             .then((result: object) => result)
             .catch((err: Error) => {
                 const errorToBeThrown = new Error
