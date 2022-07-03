@@ -37,7 +37,7 @@ const GetQuotesFromChampionController: iController = new getQuotesFromChampionCo
 router.get('/test', (req: Request, res: Response) => {
     // const test = req.cookies['JWT'] -> Assim que pega o Token
     // console.log(test)
-    res.status(200).json({header: "cu"})
+    res.status(200).json({header: "teste"})
 })
 
 //GET QUOTES ROUTE
