@@ -10,6 +10,7 @@ interface iService {
     async getQuote?(quote: string): Promise<object>,
     async getQuoteQtd?(): Promise<object>,
     async getAllQuotes?(): Promise<object>,
+    async getAllQuotesFromChampion?(champion: string): Promise<object>,
     async insertQuote?(iCreateQuote): Promise<object>,
     async validateUser?(email: string, password: string): Promise<iReturnValidateUser>
     async checkEmail?(email: string): Promise<boolean>,
@@ -25,6 +26,7 @@ interface iExecuteParams {
     userData?: iUserData,
     createUserData?: iCreateUserData,
     token?: string,
+    champion?: string
 }
 
 interface iUserData {

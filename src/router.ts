@@ -28,7 +28,10 @@ const logoutController = require('./controller/user/logoutController')
 const LogoutController: iController = new logoutController
 
 const insertQuoteController = require('./controller/insertQuotes/insertQuoteController')
-const InsertQuoteController: iController = new insertQuoteController
+const InsertQuoteController: iController = new insertQuoteController()
+
+const getQuotesFromChampionController = require('./controller/getQuotes/getQuotesFromChampionController')
+const GetQuotesFromChampionController: iController = new getQuotesFromChampionController()
 
 //TEST ROUTE
 router.get('/test', (req: Request, res: Response) => {
@@ -53,5 +56,6 @@ router.get('/isauthed', IsAuthedController.handle)
 router.get('/logout', LogoutController.handle)
 //INSERT QUOTE ROUTE
 router.post('/insertquote', InsertQuoteController.handle)
-
+//GET QUOTES FROM A CHAMPION ROUTE
+router.get('/getquotes/champion/:champion', GetQuotesFromChampionController.handle)
 exports.router = router
